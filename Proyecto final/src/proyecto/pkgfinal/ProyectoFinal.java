@@ -13,7 +13,7 @@ public class ProyectoFinal {
     public static void main(String[] args) {
         System.out.println("hola mundo alvaro");
         System.out.println("jhon estuvo aqui tambien ");
-        System.out.println("Sofia es grande ");
+        System.out.println("Sofia es grande y hermosa ");
         
     }
     
