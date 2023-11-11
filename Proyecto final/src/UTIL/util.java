@@ -2,7 +2,7 @@ package UTIL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+// solucion de comfilcto 
 public class Util {
 
     public Util(){

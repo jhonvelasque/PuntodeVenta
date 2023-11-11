@@ -1,5 +1,6 @@
 package UTIL;
 import java.sql.*;
+// solucionando comflicto 
 public class DbBean {
     String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=BDITIS";
     String dbDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
