@@ -11,5 +11,10 @@ package BEAN;
  */
 public class Categoria_producto {
     private int id_categoria ;
+    private String categoria ;
+    private int subcategoria ;
+    private String marca;
+    private String modelo ;
+    private String descripcion ;
     
 }
