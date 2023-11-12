@@ -2,7 +2,7 @@ package UTIL;
 import java.sql.*;
 // solucionando comflicto 
 public class DbBean {
-    String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=BDITIS";
+    String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=PEPEPHONE";
     String dbDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     
     private Connection dbCon;

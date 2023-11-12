@@ -13,7 +13,7 @@ public class Util {
         DbBean con = new DbBean();
         int countReg, IM = 0;
         try{
-            String sql = "SELECT COUNT("+ nombCamp +") AS idMax FROM "+ nombTbl +"";
+            String sql = "SELECT COUNT( "+ nombCamp +") AS idMax FROM "+ nombTbl +"";
             ResultSet result = con.resultadoSQL(sql);
             if(result.next()){
                 countReg = result.getInt(1);

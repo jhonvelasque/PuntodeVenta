@@ -2,7 +2,7 @@
 package DAO;
 
 import BEAN.Rol;
-import UTIL.dbBean;
+import UTIL.DbBean;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -13,7 +13,7 @@ public class RolDAO {
     //Visualizaciòn (select)
     public Vector<Rol> listaRol(boolean sw, String cad) throws SQLException{
             Vector<Rol> listaRol = new Vector<Rol>();
-            dbBean con = new dbBean();
+            bBean con = new dbBean();
             String sql = "select * from Rol ";
         
         if (sw == true){
