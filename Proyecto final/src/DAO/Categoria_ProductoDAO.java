@@ -24,7 +24,7 @@ public class Categoria_ProductoDAO {
         sql = "Select * from CategoriaProducto";
         System.out.println(sql);
         if(sw == true){
-            sql = sql + " where descripcion like '"+ cad +"%'";
+            sql = sql + " where DescCategoria like '"+ cad +"%'";
         }
         try{
             ResultSet resultado;
@@ -49,5 +49,24 @@ public class Categoria_ProductoDAO {
         }
         System.out.println(listaCatProd);
         return listaCatProd;
+    }
+    public void insertaProducto(Categoria_producto prod){
+        DbBean con;
+        con = new DbBean();
+        String sql;
+        
+        try{
+            sql = "insert into producto values ("+ prod.getId_producto() +",  ";
+            sql += " '"+ prod.getDescripcion() +"', '"+ prod.getTipo() +"', ";
+            sql += " "+ prod.getPrecio() +", "+ prod.getEstado() +")";
+            con.ejecutaSQL(sql);
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+        try{
+            con.desconecta();
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
     }
 }

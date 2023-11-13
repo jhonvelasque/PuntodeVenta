@@ -67,7 +67,7 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="btmCerrar" min="-2" pref="138" max="-2" attributes="0"/>
+                  <Component id="btmLimpiar1" min="-2" pref="138" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -89,9 +89,9 @@
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btmCerrar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="btmLimpiar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="btmGrabar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="btmLimpiar1" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -146,7 +146,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mantenimiento Producto categoria"/>
+        <Property name="text" type="java.lang.String" value="MANTEMINETO PRODUCTO CATEGORIA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -172,11 +172,6 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Marca"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btmCerrar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CERRAR"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btmGrabar">
@@ -293,12 +288,16 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblCatProdMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txtBuscar">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscarActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -322,6 +321,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdCategoriaProducto">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdCategoriaProductoActionPerformed"/>
       </Events>
@@ -355,6 +357,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btmLimpiar1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="SALIR"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btmLimpiar1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author carlo
  */
 public class FrmCategoria_producto extends javax.swing.JFrame {
-    
+    private int idCatProd;
     Categoria_ProductoDAO prodCatDao;
     DefaultTableModel dtm;
     Util util; // objeto de la clase util que se conecta a la B
@@ -32,7 +32,7 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
         initComponents(); // inicializamos los componentes
         dtm = (DefaultTableModel)this.tblCatProd.getModel(); // inicializamos el modelo de la tabla
         llenaTblCatProductos(false, ""); // llenamos la tabla de productos
-        //llenaCmbTipo(); // llenamos el combo de tipo de productos
+        llenaCmbTipo(); // llenamos el combo de tipo de productos
         
     }
 
@@ -52,7 +52,6 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btmCerrar = new javax.swing.JButton();
         btmGrabar = new javax.swing.JButton();
         btmLimpiar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -67,12 +66,13 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
         txtObservacion = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
         cmdSubcategoria = new javax.swing.JComboBox<>();
+        btmLimpiar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("subcategoria");
 
-        jLabel2.setText("Mantenimiento Producto categoria");
+        jLabel2.setText("MANTEMINETO PRODUCTO CATEGORIA");
 
         jLabel3.setText("Modelo");
 
@@ -83,8 +83,6 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
         jLabel6.setText("Observacion");
 
         jLabel7.setText("Marca");
-
-        btmCerrar.setText("CERRAR");
 
         btmGrabar.setText("GRABAR");
         btmGrabar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +117,11 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblCatProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCatProdMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCatProd);
         if (tblCatProd.getColumnModel().getColumnCount() > 0) {
             tblCatProd.getColumnModel().getColumn(0).setResizable(false);
@@ -132,6 +135,11 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
+            }
+        });
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
             }
         });
 
@@ -181,6 +189,7 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
             }
         });
 
+        txtIdCategoriaProducto.setEnabled(false);
         txtIdCategoriaProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdCategoriaProductoActionPerformed(evt);
@@ -206,6 +215,13 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
         });
 
         cmdSubcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btmLimpiar1.setText("SALIR");
+        btmLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btmLimpiar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,7 +261,7 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
                         .addGap(51, 51, 51)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btmCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btmLimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -262,9 +278,9 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btmCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btmLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btmGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btmGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btmLimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,6 +346,12 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
             dtm.addRow(vec);
         }
     }
+    private void llenaCmbTipo(){
+        this.cmdSubcategoria.addItem("");
+        this.cmdSubcategoria.addItem("Costo Bajo");
+        this.cmdSubcategoria.addItem("Costo Alto");
+        
+    }
     private void btmLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmLimpiarActionPerformed
         this.limpia();        // TODO add your handling code here:
     }//GEN-LAST:event_btmLimpiarActionPerformed
@@ -355,12 +377,46 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtModeloActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btmEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btmEliminarActionPerformed
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        if(this.txtBuscar.getText().isEmpty()){
+            llenaTblCatProductos(false, "");
+        }else{
+            llenaTblCatProductos(true, this.txtBuscar.getText());
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void btmLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmLimpiar1ActionPerformed
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btmLimpiar1ActionPerformed
+
+    private void tblCatProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCatProdMouseClicked
+                // TODO add your handling code here:
+        int i;
+        i = this.tblCatProd.getSelectedRow();
+        this.txtIdCategoriaProducto.setText(dtm.getValueAt(i, 0).toString());
+        this.idCatProd = Integer.parseInt(dtm.getValueAt(i, 0).toString());
+        this.txtDescCategoria.setText(dtm.getValueAt(i, 1).toString());
+        this.cmdSubcategoria.setSelectedItem(dtm.getValueAt(i, 2).toString());
+        this.txtMarca.setText(dtm.getValueAt(i, 3).toString());
+        this.txtModelo.setText(dtm.getValueAt(i, 4).toString());
+        this.txtObservacion.setText(dtm.getValueAt(i, 5).toString());
+// esta sent
+        if(dtm.getValueAt(i, 2).toString().equals("1")){
+            this.cmdSubcategoria.setSelectedItem("Costo Bajo");
+        }else{
+            this.cmdSubcategoria.setSelectedItem("Costo Alto");
+        }
+        this.btmGrabar.setText("Actualizar");
+        this.btmEliminar.setEnabled(true);
+    }//GEN-LAST:event_tblCatProdMouseClicked
 
     /**
      * @param args the command line arguments
@@ -398,10 +454,10 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btmCerrar;
     private javax.swing.JButton btmEliminar;
     private javax.swing.JButton btmGrabar;
     private javax.swing.JButton btmLimpiar;
+    private javax.swing.JButton btmLimpiar1;
     private javax.swing.JComboBox<String> cmdSubcategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
