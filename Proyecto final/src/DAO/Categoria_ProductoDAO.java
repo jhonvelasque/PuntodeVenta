@@ -57,8 +57,34 @@ public class Categoria_ProductoDAO {
         
         try{
             sql = "insert into producto values ("+ catprod.getId_categoria()+",  ";
-            sql += " '"+ prod.getDescripcion() +"', '"+ prod.getTipo() +"', ";
-            sql += " "+ prod.getPrecio() +", "+ prod.getEstado() +")";
+            sql += " '"+ catprod.getCategoria()+"', '"+ catprod.getSubcategoria() +"', ";
+            sql += " '"+ catprod.getMarca()+"', '"+ catprod.getModelo() +"', ";
+            sql += " '"+ catprod.getDescripcion()+"'";
+            //sql += " "+ catprod.getMarca() +", "+ catprod.getModelo() +")";
+            System.out.println(sql);
+            con.ejecutaSQL(sql);
+            
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+        try{
+            con.desconecta();
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public void actualizaProducto(Categoria_producto catprod){
+        DbBean con;
+        con = new DbBean();
+        String sql;
+        
+        try{
+            sql = "update producto set DescCategoria = '"+ catprod.getCategoria() +"', ";
+            sql += " Subcategoria = '"+ catprod.getSubcategoria() +"', Marca = "+ catprod.getMarca() +", ";
+            sql += " Modelo = "+ catprod.getModelo() +" ";
+            sql += " Descripcion = "+ catprod.getDescripcion() +" ";
+            sql += " where id_producto = "+ catprod.getId_categoria()+"";
+            
             con.ejecutaSQL(sql);
         }catch(java.sql.SQLException e){
             e.printStackTrace();
