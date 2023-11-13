@@ -50,13 +50,13 @@ public class Categoria_ProductoDAO {
         System.out.println(listaCatProd);
         return listaCatProd;
     }
-    public void insertaProducto(Categoria_producto prod){
+    public void insertaProducto(Categoria_producto catprod){
         DbBean con;
         con = new DbBean();
         String sql;
         
         try{
-            sql = "insert into producto values ("+ prod.getId_producto() +",  ";
+            sql = "insert into producto values ("+ catprod.getId_categoria()+",  ";
             sql += " '"+ prod.getDescripcion() +"', '"+ prod.getTipo() +"', ";
             sql += " "+ prod.getPrecio() +", "+ prod.getEstado() +")";
             con.ejecutaSQL(sql);

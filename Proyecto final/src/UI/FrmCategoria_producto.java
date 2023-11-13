@@ -214,8 +214,6 @@ public class FrmCategoria_producto extends javax.swing.JFrame {
             }
         });
 
-        cmdSubcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btmLimpiar1.setText("SALIR");
         btmLimpiar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
