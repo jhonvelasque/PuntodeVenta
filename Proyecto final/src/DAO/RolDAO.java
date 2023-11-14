@@ -13,7 +13,7 @@ public class RolDAO {
     //Visualizaciòn (select)
     public Vector<Rol> listaRol(boolean sw, String cad) throws SQLException{
             Vector<Rol> listaRol = new Vector<Rol>();
-            bBean con = new dbBean();
+            DbBean con = new DbBean();
             String sql = "select * from Rol ";
         
         if (sw == true){
@@ -39,7 +39,7 @@ public class RolDAO {
         }catch(java.sql.SQLException e){
             e.printStackTrace();
         }
-        return listaAvi;
+        //return listaAvi;
         return listaRol; 
     }
     
@@ -49,7 +49,7 @@ public class RolDAO {
         DbBean con = new DbBean();
         String sql;
         sql = "insert into Libro values ( ";
-        sql = sql + " "+ r.getId_rol() +", '"+ r.getDescrip_rol() +"')";
+        sql = sql + " "+ r.getIdRol() +", '"+ r.getDesRol() +"')";
         con.ejecutaSQL(sql);
         try{
             con.desconecta();
@@ -63,8 +63,8 @@ public class RolDAO {
         DbBean con = new DbBean();
         String sql;
         try{
-            sql = "update Rol set DescripRol = '"+ r.getDescrip_rol() +"', ";
-            sql += " where Id_Rol = "+ r.getId_rol() +"";
+            sql = "update Rol set DescripRol = '"+ r.getDesRol() +"', ";
+            sql += " where Id_Rol = "+ r.getIdRol() +"";
            
             con.ejecutaSQL(sql);
         }catch(java.sql.SQLException e){
