@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class ClienteDAO {
-    public Vector<Cliente> listClientes(boolean sw, String cad1, String cad2) throws SQLException{
+    public Vector<Cliente> listClientes(boolean sw, String cad1, String cad2){
         Vector<Cliente> listaCliente = new Vector<Cliente>();
         DbBean con = new DbBean();
         String sql = "Select *from Cliente";
