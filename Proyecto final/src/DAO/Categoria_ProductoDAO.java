@@ -47,7 +47,7 @@ public class Categoria_ProductoDAO {
         }catch(java.sql.SQLException e){
             e.printStackTrace();
         }
-        System.out.println(listaCatProd);
+        
         return listaCatProd;
     }
     public void insertaProducto(Categoria_producto catprod){
@@ -56,10 +56,10 @@ public class Categoria_ProductoDAO {
         String sql;
         
         try{
-            sql = "insert into producto values ("+ catprod.getId_categoria()+",  ";
-            sql += " '"+ catprod.getCategoria()+"', '"+ catprod.getSubcategoria() +"', ";
+            sql = "insert into CategoriaProducto values ("+ catprod.getId_categoria()+",  ";
+            sql += " '"+ catprod.getCategoria()+"', "+ catprod.getSubcategoria() +", ";
             sql += " '"+ catprod.getMarca()+"', '"+ catprod.getModelo() +"', ";
-            sql += " '"+ catprod.getDescripcion()+"'";
+            sql += " '"+ catprod.getDescripcion()+"')";
             //sql += " "+ catprod.getMarca() +", "+ catprod.getModelo() +")";
             System.out.println(sql);
             con.ejecutaSQL(sql);
@@ -79,12 +79,12 @@ public class Categoria_ProductoDAO {
         String sql;
         
         try{
-            sql = "update producto set DescCategoria = '"+ catprod.getCategoria() +"', ";
-            sql += " Subcategoria = '"+ catprod.getSubcategoria() +"', Marca = "+ catprod.getMarca() +", ";
-            sql += " Modelo = "+ catprod.getModelo() +" ";
-            sql += " Descripcion = "+ catprod.getDescripcion() +" ";
-            sql += " where id_producto = "+ catprod.getId_categoria()+"";
-            
+            sql = "update CategoriaProducto set DescCategoria = '"+ catprod.getCategoria() +"', ";
+            sql += " Subcategoria = "+ catprod.getSubcategoria() +", Marca = '"+ catprod.getMarca() +"' , ";
+            sql += " Modelo = '"+ catprod.getModelo() +"' ,";
+            sql += " Descripcion = '"+ catprod.getDescripcion() +"' ";
+            sql += " where IdCategoría = "+ catprod.getId_categoria()+"";
+            System.out.println(sql);
             con.ejecutaSQL(sql);
         }catch(java.sql.SQLException e){
             e.printStackTrace();
@@ -95,4 +95,34 @@ public class Categoria_ProductoDAO {
             e.printStackTrace();
         }
     }
+     public boolean eliminaProducto(Categoria_producto catprod){
+        DbBean con;
+        con = new DbBean();
+        String sql;
+        boolean sw = true;
+        try{
+            sql = "select * from CategoriaProducto where IdCategoría = "+ catprod.getId_categoria()+"";
+            
+            ResultSet r;
+            r = con.resultadoSQL(sql);
+            if(r.next()){
+                sw = true;
+            }
+            if(sw == true){
+                sql = "delete from CategoriaProducto where IdCategoría = "+ catprod.getId_categoria() +"";
+                con.ejecutaSQL(sql);
+                System.out.println(sql);
+            }
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+        try{
+            con.desconecta();
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+        return sw;
+    }
+    
+    
 }
