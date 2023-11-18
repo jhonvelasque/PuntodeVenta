@@ -5,7 +5,7 @@ public class Producto {
     private String NombreProducto;
     private double  CostoUnitario;
     private double PrecioVenta;
-    private String FehcaIngreso;
+    private String FechaIngreso;
     private int Estado;
     
     public Producto(){
@@ -17,7 +17,7 @@ public class Producto {
         this.NombreProducto = NombreProducto;
         this.CostoUnitario = CostoUnitario;
         this.PrecioVenta = PrecioVenta;
-        this.FehcaIngreso = FehcaIngreso;
+        this.FechaIngreso = FechaIngreso;
         this.Estado = Estado;
     }
 
@@ -61,12 +61,12 @@ public class Producto {
         this.PrecioVenta = PrecioVenta;
     }
 
-    public String getFehcaIngreso() {
-        return FehcaIngreso;
+    public String getFechaIngreso() {
+        return FechaIngreso;
     }
 
-    public void setFehcaIngreso(String FehcaIngreso) {
-        this.FehcaIngreso = FehcaIngreso;
+    public void setFechaIngreso(String FechaIngreso) {
+        this.FechaIngreso = FechaIngreso;
     }
 
     public int getEstado() {
