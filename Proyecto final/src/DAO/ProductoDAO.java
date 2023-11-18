@@ -30,7 +30,7 @@ public class ProductoDAO {
                 p.setNombreProducto(resultado.getString(3));
                 p.setCostoUnitario(resultado.getDouble(4));
                 p.setPrecioVenta(resultado.getDouble(5));
-                p.setFehcaIngreso(resultado.getString(6)); 
+                p.setFechaIngreso(resultado.getString(6)); 
                 p.setEstado(resultado.getInt(7));
                 listaProd.addElement(p);
             }
@@ -55,7 +55,7 @@ public class ProductoDAO {
             sql = "insert into Producto values ("+ prod.getIdProducto()+",  ";
             sql += " "+ prod.getIdCategoria()+", '"+ prod.getNombreProducto()+"', ";
             sql += " "+ prod.getCostoUnitario()+", "+ prod.getPrecioVenta()+", ";
-            sql += " '"+ prod.getFehcaIngreso()+"', "+ prod.getEstado() +")";
+            sql += " '"+ prod.getFechaIngreso()+"', "+ prod.getEstado() +")";
             con.ejecutaSQL(sql);
         }catch(java.sql.SQLException e){
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class ProductoDAO {
         try{
             sql = "update Producto set NombreProducto = "+ prod.getIdCategoria()+", ";
             sql += " NombreProducto = '"+ prod.getNombreProducto()+"', CostoUnitario = "+ prod.getCostoUnitario()+", ";
-            sql += " PrecioVenta = "+ prod.getPrecioVenta()+", FechaIngreso = '"+ prod.getFehcaIngreso()+"', ";
+            sql += " PrecioVenta = "+ prod.getPrecioVenta()+", FechaIngreso = '"+ prod.getFechaIngreso()+"', ";
             sql += " Estado = "+ prod.getEstado() +" ";
             sql += " where IdProducto = "+ prod.getIdProducto()+"";
             
