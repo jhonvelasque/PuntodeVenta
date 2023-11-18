@@ -35,7 +35,7 @@ public class FrmProducto extends javax.swing.JFrame {
             vec.addElement(listaProd.get(i).getNombreProducto());
             vec.addElement(listaProd.get(i).getCostoUnitario());
             vec.addElement(listaProd.get(i).getPrecioVenta());
-            vec.addElement(listaProd.get(i).getFehcaIngreso());
+            vec.addElement(listaProd.get(i).getFechaIngreso());
             vec.addElement(listaProd.get(i).getEstado());
             dtm.addRow(vec);
         }
@@ -284,7 +284,7 @@ public class FrmProducto extends javax.swing.JFrame {
             p.setNombreProducto(this.txtNombre.getText());
             p.setCostoUnitario(Integer.parseInt(this.txtCosto.getText()));
             p.setPrecioVenta(Double.parseDouble(this.txtPrecioVenta.getText()));
-            p.setFehcaIngreso(this.txtFechaIngreso.getText());
+            p.setFechaIngreso(this.txtFechaIngreso.getText());
             if(this.cmbEstado.getSelectedItem().toString().equals("Activo")){
                 p.setEstado(1);
             }else{
