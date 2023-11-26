@@ -8,7 +8,6 @@ import java.util.Vector;
 public class ProductoDAO {
     public ProductoDAO() {
     }
-    
     //Proceso de visualización(Select)
     public Vector<Producto> listaProductos(boolean sw, String cad){
         Vector<Producto> listaProd;
@@ -27,11 +26,12 @@ public class ProductoDAO {
                 Producto p = new Producto();
                 p.setIdProducto(resultado.getInt(1));
                 p.setIdCategoria(resultado.getInt(2));
-                p.setNombreProducto(resultado.getString(3));
-                p.setCostoUnitario(resultado.getDouble(4));
-                p.setPrecioVenta(resultado.getDouble(5));
-                p.setFechaIngreso(resultado.getString(6)); 
-                p.setEstado(resultado.getInt(7));
+                p.setMarca(resultado.getString(3));
+                p.setNombreProducto(resultado.getString(4));
+                p.setCostoUnitario(resultado.getDouble(5));
+                p.setPrecioVenta(resultado.getDouble(6));
+                p.setFechaIngreso(resultado.getString(7));
+                p.setEstado(resultado.getInt(8));
                 listaProd.addElement(p);
             }
         }catch(java.sql.SQLException e){
@@ -53,7 +53,7 @@ public class ProductoDAO {
         
         try{
             sql = "insert into Producto values ("+ prod.getIdProducto()+",  ";
-            sql += " "+ prod.getIdCategoria()+", '"+ prod.getNombreProducto()+"', ";
+            sql += " "+ prod.getIdCategoria()+", '"+ prod.getMarca()+"', "+ prod.getNombreProducto()+"', ";
             sql += " "+ prod.getCostoUnitario()+", "+ prod.getPrecioVenta()+", ";
             sql += " '"+ prod.getFechaIngreso()+"', "+ prod.getEstado() +")";
             con.ejecutaSQL(sql);
@@ -75,7 +75,7 @@ public class ProductoDAO {
         
         try{
             sql = "update Producto set NombreProducto = "+ prod.getIdCategoria()+", ";
-            sql += " NombreProducto = '"+ prod.getNombreProducto()+"', CostoUnitario = "+ prod.getCostoUnitario()+", ";
+            sql += " NombreProducto = '"+ prod.getNombreProducto()+"', Marca = '"+ prod.getMarca()+"', CostoUnitario = "+ prod.getCostoUnitario()+", ";
             sql += " PrecioVenta = "+ prod.getPrecioVenta()+", FechaIngreso = '"+ prod.getFechaIngreso()+"', ";
             sql += " Estado = "+ prod.getEstado() +" ";
             sql += " where IdProducto = "+ prod.getIdProducto()+"";
