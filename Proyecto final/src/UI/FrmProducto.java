@@ -32,6 +32,7 @@ public class FrmProducto extends javax.swing.JFrame {
             Vector vec = new Vector();
             vec.addElement(listaProd.get(i).getIdProducto());
             vec.addElement(listaProd.get(i).getIdCategoria());
+            vec.addElement(listaProd.get(i).getMarca());
             vec.addElement(listaProd.get(i).getNombreProducto());
             vec.addElement(listaProd.get(i).getCostoUnitario());
             vec.addElement(listaProd.get(i).getPrecioVenta());
@@ -42,7 +43,7 @@ public class FrmProducto extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -69,6 +70,8 @@ public class FrmProducto extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        txtMarca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +86,8 @@ public class FrmProducto extends javax.swing.JFrame {
         jLabel5.setText("PrecioVenta");
 
         jLabel6.setText("FechaIngreso");
+
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "No Activo" }));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("MANTENIMIENTO PRODUCTO");
@@ -114,11 +119,11 @@ public class FrmProducto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdProducto", "IdCategoria", "Nombre", "Costo", "Precio", "FechaIngreso"
+                "IdProducto", "IdCategoria", "Marca", "Nombre", "Costo", "Precio", "FechaIngreso"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -133,7 +138,7 @@ public class FrmProducto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TblProductos);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 50, 530, 190);
+        jScrollPane1.setBounds(10, 50, 620, 190);
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +147,7 @@ public class FrmProducto extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnEliminar);
-        btnEliminar.setBounds(450, 250, 79, 25);
+        btnEliminar.setBounds(540, 260, 79, 25);
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +170,14 @@ public class FrmProducto extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setText("Marca");
+
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMarcaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,20 +189,22 @@ public class FrmProducto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel10))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtIdProducto)
+                                    .addComponent(txtIdCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                    .addComponent(txtMarca)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel8))
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtIdProducto)
-                                    .addComponent(txtIdCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(57, 57, 57)
@@ -203,8 +218,8 @@ public class FrmProducto extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addGap(70, 70, 70)
                                     .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(224, 224, 224)
                         .addComponent(btnAgregar)
@@ -213,7 +228,7 @@ public class FrmProducto extends javax.swing.JFrame {
                         .addGap(149, 149, 149)
                         .addComponent(btnSalir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(314, 314, 314)
+                        .addGap(340, 340, 340)
                         .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -223,16 +238,20 @@ public class FrmProducto extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -253,7 +272,7 @@ public class FrmProducto extends javax.swing.JFrame {
                             .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnLimpiar)
@@ -262,25 +281,26 @@ public class FrmProducto extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarActionPerformed
+    }                                         
 
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {                                      
         if(this.txtBuscar.getText().isEmpty()){
             llenaTblProductos(false, "");
         }else{
             llenaTblProductos(true, this.txtBuscar.getText());
         }
-    }//GEN-LAST:event_txtBuscarKeyReleased
+    }                                     
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if(valida() == true){
             Producto p;
             p = new Producto();
             p.setIdCategoria(Integer.parseInt(this.txtIdCategoria.getText()));
+            p.setMarca(this.txtMarca.getText());
             p.setNombreProducto(this.txtNombre.getText());
             p.setCostoUnitario(Integer.parseInt(this.txtCosto.getText()));
             p.setPrecioVenta(Double.parseDouble(this.txtPrecioVenta.getText()));
@@ -302,32 +322,33 @@ public class FrmProducto extends javax.swing.JFrame {
             limpia();
             JOptionPane.showMessageDialog(this, "Se ha concretado satisfactoriamente el registro");
         }
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }                                          
 
-    private void TblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblProductosMouseClicked
+    private void TblProductosMouseClicked(java.awt.event.MouseEvent evt) {                                          
         int i;
         i = this.TblProductos.getSelectedRow();
         this.txtIdProducto.setText(dtm.getValueAt(i, 0).toString());
         this.idProd = Integer.parseInt(dtm.getValueAt(i, 0).toString());
         this.txtIdCategoria.setText(dtm.getValueAt(i, 1).toString());
-        this.txtNombre.setText(dtm.getValueAt(i, 2).toString());
-        this.txtCosto.setText(dtm.getValueAt(i, 3).toString());
-        this.txtPrecioVenta.setText(dtm.getValueAt(i, 4).toString());
-        this.txtFechaIngreso.setText(dtm.getValueAt(i, 5).toString());
-        if(dtm.getValueAt(i, 4).toString().equals("1")){
+        this.txtMarca.setText(dtm.getValueAt(i, 2).toString());
+        this.txtNombre.setText(dtm.getValueAt(i, 3).toString());
+        this.txtCosto.setText(dtm.getValueAt(i, 4).toString());
+        this.txtPrecioVenta.setText(dtm.getValueAt(i, 5).toString());
+        this.txtFechaIngreso.setText(dtm.getValueAt(i, 6).toString());
+        if(dtm.getValueAt(i, 7).toString().equals("1")){
             this.cmbEstado.setSelectedItem("Activo");
         }else{
             this.cmbEstado.setSelectedItem("No Activo");
         }
         this.btnAgregar.setText("Actualizar");
         this.btnEliminar.setEnabled(true);
-    }//GEN-LAST:event_TblProductosMouseClicked
+    }                                         
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
         this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    }                                        
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                            
          int idx = 0;
         boolean sw = false;
         if(this.TblProductos.getSelectedRow() >= 0){
@@ -344,17 +365,24 @@ public class FrmProducto extends javax.swing.JFrame {
         this.llenaTblProductos(false, "");
         this.btnEliminar.setEnabled(false);
         this.limpia();
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }                                           
 
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         this.limpia();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+    }                                          
+
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
 
     private boolean valida(){
         boolean sw = false;
         String cad = "";
         if(this.txtIdCategoria.getText().isEmpty()){
             cad = "Debe registrar la categoria";
+        }
+        if(this.txtMarca.getText().isEmpty()){
+            cad = "\nDebe registrar la marca del producto";
         }
         if(this.txtNombre.getText().isEmpty()){
             cad = "\nDebe registrar el nombre del producto";
@@ -379,6 +407,7 @@ public class FrmProducto extends javax.swing.JFrame {
     private void limpia(){
         this.txtIdProducto.setText("");
         this.txtIdCategoria.setText("");
+        this.txtMarca.setText("");
         this.txtNombre.setText("");
         this.txtCosto.setText("");
         this.txtPrecioVenta.setText("");
@@ -423,7 +452,7 @@ public class FrmProducto extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JTable TblProductos;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
@@ -431,6 +460,7 @@ public class FrmProducto extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -446,7 +476,8 @@ public class FrmProducto extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaIngreso;
     private javax.swing.JTextField txtIdCategoria;
     private javax.swing.JTextField txtIdProducto;
+    private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecioVenta;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
