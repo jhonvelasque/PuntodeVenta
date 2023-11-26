@@ -10,7 +10,9 @@ public class ClienteDAO {
     public Vector<Cliente> listClientes(boolean sw, String cad1, String cad2){
         Vector<Cliente> listaCliente = new Vector<Cliente>();
         DbBean con = new DbBean();
-        String sql = "Select *from Cliente";
+        System.out.println("HOLA AQUI LLEGO");
+        String sql = "Select *from Cliente ";
+        System.out.println("HOLA ADSDGO");
         if(sw == true){
             sql = sql + " where " + cad1 + " like '" + cad2 + "%'";
         }
@@ -63,13 +65,13 @@ public class ClienteDAO {
             e.printStackTrace();
         }
     }
-    public void actualizaProducto(Cliente c){
+    public void actualizaCliente(Cliente c){
         DbBean con;
         con = new DbBean();
         String sql;
         
         try{
-            sql = "update Cliente set IdCategoria = " + c.getIdCategoria() + " , NombCliente = '"+ c.getNombCliente() +"', ";
+            sql = "update Cliente set IdCategoriaCliente = " + c.getIdCategoria() + " , NombCliente = '"+ c.getNombCliente() +"', ";
             sql += " ApellCliente = '"+ c.getApellCliente() +"', DocCliente = "+ c.getDocCliente() +" , ";
             sql += " Telefono = "+ c.getTelefono() +" ,";
             sql += " Correo = '"+ c.getCorreo() +"' ";

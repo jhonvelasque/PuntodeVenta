@@ -5,6 +5,7 @@ import DAO.ClienteDAO;
 import UTIL.Util;
 import java.sql.SQLException;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FrmCliente extends javax.swing.JFrame {
@@ -18,9 +19,10 @@ public class FrmCliente extends javax.swing.JFrame {
         initComponents();
         cDao = new ClienteDAO(); 
         util = new Util();
-        initComponents(); 
+        
         dtm = (DefaultTableModel)this.tblCliente.getModel(); 
-        llenaTblCliente(false, "" , "");
+        llenaTblCliente(false, "IdCliente" , "");
+        limpiar();
     }
 
     private void llenaTblCliente(boolean sw, String cad1, String cad2) {
@@ -88,6 +90,10 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel6.setText("Teléfono:");
 
         jLabel7.setText("Correo:");
+
+        txtIdCliente.setEditable(false);
+
+        txtIdCategoria.setEditable(false);
 
         btnAgregaCategoriaC.setText("Agregar Categoría");
         btnAgregaCategoriaC.addActionListener(new java.awt.event.ActionListener() {
@@ -187,20 +193,41 @@ public class FrmCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCliente);
 
         jLabel8.setText("Buscar:");
 
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+
         jLabel9.setText("Filtros:");
 
-        cmbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id Cliente", "Nombres", "Apellidos", "Nro Doc" }));
+        cmbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdCliente", "NombCliente", "ApellCliente", "DocCliente" }));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("CLIENTE");
 
         btnAgregarCliente.setText("Agregar");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarClienteActionPerformed(evt);
+            }
+        });
 
         btnLimpiarCliente.setText("Limpiar");
+        btnLimpiarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarClienteActionPerformed(evt);
+            }
+        });
 
         btnEliminarCliente.setText("Eliminar");
 
@@ -283,14 +310,100 @@ public class FrmCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregaCategoriaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregaCategoriaCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregaCategoriaCActionPerformed
-
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnsalirActionPerformed
 
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        if(this.txtBuscar.getText().equals("")){
+            llenaTblCliente(false, "IdCliente", "");
+        }else{
+            llenaTblCliente(true, this.cmbFiltro.getSelectedItem().toString(), this.txtBuscar.getText());
+        }
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void btnLimpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarClienteActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarClienteActionPerformed
+
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        if(validar()){
+            Cliente c = new Cliente();
+            c.setIdCliente(Integer.parseInt(this.txtIdCliente.getText()));
+            c.setIdCategoria(Integer.parseInt(this.txtIdCategoria.getText()));
+            c.setNombCliente(this.txtNombres.getText());
+            c.setApellCliente(this.txtApellidos.getText());
+            c.setDocCliente(Integer.parseInt(this.txtNroDoc.getText()));
+            c.setTelefono(Integer.parseInt(this.txtTelefono.getText()));
+            c.setCorreo(this.txtCorreo.getText());
+            
+            
+            if(this.btnAgregarCliente.getText().equals("Agregar")){
+                cDao.insertaCliente(c);
+            }else{
+                cDao.actualizaCliente(c);
+            }
+            limpiar();
+        }
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
+
+    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        int fc = this.tblCliente.getSelectedRow();
+        this.txtIdCliente.setText(String.valueOf(dtm.getValueAt(fc, 0)));
+        this.txtIdCategoria.setText(String.valueOf(dtm.getValueAt(fc, 1)));
+        this.txtNombres.setText(String.valueOf(dtm.getValueAt(fc, 2)));
+        this.txtApellidos.setText(String.valueOf(dtm.getValueAt(fc, 3)));
+        this.txtNroDoc.setText(String.valueOf(dtm.getValueAt(fc, 4)));
+        this.txtTelefono.setText(String.valueOf(dtm.getValueAt(fc, 5)));
+        this.txtCorreo.setText(String.valueOf(dtm.getValueAt(fc, 6)));
+        
+        this.btnAgregarCliente.setText("Actualizar");
+    }//GEN-LAST:event_tblClienteMouseClicked
+
+    private void btnAgregaCategoriaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregaCategoriaCActionPerformed
+        
+    }//GEN-LAST:event_btnAgregaCategoriaCActionPerformed
+
+    private void limpiar(){
+        this.txtIdCliente.setText(String.valueOf(util.idNext("Cliente", "IdCliente")));
+        this.txtIdCategoria.setText("");
+        this.txtNombres.setText("");
+        this.txtApellidos.setText("");
+        this.txtNroDoc.setText("");
+        this.txtTelefono.setText("");
+        this.txtCorreo.setText("");
+        this.txtBuscar.setText("");
+        this.btnAgregarCliente.setText("Agregar");
+        llenaTblCliente(false, "IdCliente", "");
+    }
+    private boolean validar(){
+        String cad = "";
+        if(this.txtIdCategoria.getText().equals("")){
+            cad += "Inserte Categoría del cliente";
+        }
+        if(this.txtNombres.getText().equals("")){
+            cad += "\nInserte nombres del cliente";
+        }
+        if(this.txtApellidos.getText().equals("")){
+            cad += "\nInserte apellidos del cliente";
+        }
+        if(this.txtNroDoc.getText().equals("")){
+            cad += "\nInserte Nro documento del cliente";
+        }
+        if(this.txtTelefono.getText().equals("")){
+            cad += "\nInserte telefono del cliente";
+        }
+        if(this.txtCorreo.getText().equals("")){
+            cad += "\nInserte correo del cliente";
+        }
+        
+        if(cad.equals("")){
+            return true; 
+        }else{
+            JOptionPane.showMessageDialog(this, cad);
+            return false;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -316,6 +429,9 @@ public class FrmCliente extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

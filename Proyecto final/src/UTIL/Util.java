@@ -2,7 +2,7 @@ package UTIL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-// solucion de comfilcto 
+
 public class Util {
 
     public Util(){
@@ -13,7 +13,7 @@ public class Util {
         DbBean con = new DbBean();
         int countReg, IM = 0;
         try{
-            String sql = "SELECT COUNT( "+ nombCamp +") AS idMax FROM "+ nombTbl +"";
+            String sql = "SELECT COUNT("+ nombCamp +") AS idMax FROM "+ nombTbl +"";
             ResultSet result = con.resultadoSQL(sql);
             if(result.next()){
                 countReg = result.getInt(1);
@@ -38,9 +38,12 @@ public class Util {
         }catch(Exception e){
             e.printStackTrace();
         }
+        
         try{
             con.desconecta();
-        }catch(SQLException e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return IM;
     }
     public int estados(String whatEver){
@@ -108,8 +111,10 @@ public class Util {
             e.printStackTrace();
         }
         try{
-            con.desconecta();
-        }catch(SQLException e){}
+           con.desconecta();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return sw;
     }
     public String cadExp(String nombTbl, String campID, String nomCampBusq, String cad){
@@ -126,9 +131,7 @@ public class Util {
         }catch(Exception e){
             e.printStackTrace();
         }
-        try{
-            con.desconecta();
-        }catch(SQLException e){}
+        
         return cade;
     }
     public int idExp(String nombTbl, String campID, String nomCampBusq, String cad){
@@ -147,7 +150,9 @@ public class Util {
         }
         try{
             con.desconecta();
-        }catch(SQLException e){}
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         return id;
     }
 
@@ -170,9 +175,10 @@ public class Util {
         }
 
         try{
-        con.desconecta();
+            con.desconecta();
         }
         catch(SQLException e){
+            e.printStackTrace();
         }
           return fecha;
      }
