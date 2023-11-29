@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc36d6a3-3ea4-4842-83a3-2da8dea0e0e2">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Subcategoria" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CategoriaProducto."IdCategoria" AS CategoriaProducto_IdCategoria,
+     CategoriaProducto."DescCategoria" AS CategoriaProducto_DescCategoria,
+     CategoriaProducto."Subcategoria" AS CategoriaProducto_Subcategoria,
+     CategoriaProducto."Garantia" AS CategoriaProducto_Garantia,
+     CategoriaProducto."Dimenciones" AS CategoriaProducto_Dimenciones,
+     CategoriaProducto."Observacion" AS CategoriaProducto_Observacion
+FROM
+     "dbo"."CategoriaProducto" CategoriaProducto
+WHERE 
+     CategoriaProducto."Subcategoria" = $P{Subcategoria}]]>
+	</queryString>
+	<field name="CategoriaProducto_IdCategoria" class="java.lang.Integer"/>
+	<field name="CategoriaProducto_DescCategoria" class="java.lang.String"/>
+	<field name="CategoriaProducto_Subcategoria" class="java.lang.Integer"/>
+	<field name="CategoriaProducto_Garantia" class="java.lang.String"/>
+	<field name="CategoriaProducto_Dimenciones" class="java.lang.String"/>
+	<field name="CategoriaProducto_Observacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="149" y="19" width="294" height="20" uuid="95ca96f3-bb29-44c4-a4c3-26679fc3e5ec"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[REPORTE CATEGORIA PRODUCTO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="10" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="61" height="20" uuid="55850e93-4526-4e16-a337-514f15c2e246"/>
+				<text><![CDATA[IdCategoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="2" width="80" height="20" uuid="884dbc9a-48f4-4e7b-a7aa-e0c9a221d046"/>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="1" width="48" height="20" uuid="998362ba-3bd4-4927-975c-f2582cf79a59"/>
+				<text><![CDATA[Garantia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="1" width="49" height="19" uuid="ee78014f-a61f-406a-a055-7cff88067168"/>
+				<text><![CDATA[Dimenciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="2" width="61" height="20" uuid="5004c470-106e-4d21-9cc5-dcaf1265128f"/>
+				<text><![CDATA[Observacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="2" width="71" height="21" uuid="fdb194d9-09aa-4ff0-bdba-ea397cad7f58"/>
+				<text><![CDATA[Subcategoria]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="23" width="481" height="1" uuid="c343dbbc-e598-4ac0-bfc9-3e828ef333eb"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="61" height="20" uuid="ce83fee2-fc72-401b-a151-6c4d49760014"/>
+				<textFieldExpression><![CDATA[$F{CategoriaProducto_IdCategoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="0" width="80" height="20" uuid="3614bf87-84df-4880-b1f9-2f7e57807590"/>
+				<textFieldExpression><![CDATA[$F{CategoriaProducto_DescCategoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="0" width="71" height="20" uuid="12c7282d-82f8-48db-9b6e-3ac3f11c4d06"/>
+				<textFieldExpression><![CDATA[$F{CategoriaProducto_Subcategoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="48" height="20" uuid="d5796b35-a616-44e3-b6f5-5f748b411a9c"/>
+				<textFieldExpression><![CDATA[$F{CategoriaProducto_Garantia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="0" width="49" height="20" uuid="500b55b9-6c01-41b2-8faa-d512da5020f0"/>
+				<textFieldExpression><![CDATA[$F{CategoriaProducto_Dimenciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="61" height="20" uuid="d6fabb25-0760-43b3-b18e-9f38a433ad8f"/>
+				<textFieldExpression><![CDATA[$F{CategoriaProducto_Observacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

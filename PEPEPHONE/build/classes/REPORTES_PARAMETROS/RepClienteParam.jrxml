@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7e16279-c9f3-446a-a1e2-bc461d74ab7d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="parCorreo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     Cliente."IdCliente" AS Cliente_IdCliente,
+     Cliente."IdCategoriaCliente" AS Cliente_IdCategoriaCliente,
+     Cliente."NombCliente" AS Cliente_NombCliente,
+     Cliente."ApellCliente" AS Cliente_ApellCliente,
+     Cliente."DocCliente" AS Cliente_DocCliente,
+     Cliente."Telefono" AS Cliente_Telefono,
+     Cliente."Correo" AS Cliente_Correo,
+     CategoriaCliente."IdCategoriaCliente" AS CategoriaCliente_IdCategoriaCliente,
+     CategoriaCliente."Estado" AS CategoriaCliente_Estado,
+     CategoriaCliente."SegCliente" AS CategoriaCliente_SegCliente,
+     CategoriaCliente."FrecCompra" AS CategoriaCliente_FrecCompra,
+     CategoriaCliente."Cuotas" AS CategoriaCliente_Cuotas,
+     CategoriaCliente."CantCuotas" AS CategoriaCliente_CantCuotas
+FROM
+     "dbo"."CategoriaCliente" CategoriaCliente INNER JOIN "dbo"."Cliente" Cliente ON CategoriaCliente."IdCategoriaCliente" = Cliente."IdCategoriaCliente"
+
+WHERE 
+     Cliente."Correo" like concat('%',$P{parCorreo}, '%')]]>
+	</queryString>
+	<field name="Cliente_IdCliente" class="java.lang.Integer"/>
+	<field name="Cliente_IdCategoriaCliente" class="java.lang.Integer"/>
+	<field name="Cliente_NombCliente" class="java.lang.String"/>
+	<field name="Cliente_ApellCliente" class="java.lang.String"/>
+	<field name="Cliente_DocCliente" class="java.lang.Integer"/>
+	<field name="Cliente_Telefono" class="java.lang.Integer"/>
+	<field name="Cliente_Correo" class="java.lang.String"/>
+	<field name="CategoriaCliente_IdCategoriaCliente" class="java.lang.Integer"/>
+	<field name="CategoriaCliente_Estado" class="java.lang.Integer"/>
+	<field name="CategoriaCliente_SegCliente" class="java.lang.String"/>
+	<field name="CategoriaCliente_FrecCompra" class="java.lang.String"/>
+	<field name="CategoriaCliente_Cuotas" class="java.lang.String"/>
+	<field name="CategoriaCliente_CantCuotas" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="39" y="22" width="448" height="20" uuid="cc18632f-9ff6-469a-aa7a-44463331cedf"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE CLIENTES POR TIPO DE CORREO ELECTRÓNICO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="59" height="20" uuid="37e30184-18a6-4562-bb4d-df173b44216e"/>
+				<text><![CDATA[ID CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="66" height="20" uuid="2e62aa79-8a72-4489-9a1c-765698464a9a"/>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="0" width="70" height="20" uuid="a96d4045-ce60-4d37-bd25-8de50ac5e403"/>
+				<text><![CDATA[APELLIDOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="0" width="53" height="20" uuid="3989b326-31b3-4156-aec8-a05e3799c7f7"/>
+				<text><![CDATA[NRO DOC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="0" width="69" height="20" uuid="5e1089ff-b471-4dbb-9268-8a4670ba54a7"/>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="0" width="78" height="20" uuid="ab08ae79-7d61-4e6d-acad-4b270c95c4a9"/>
+				<text><![CDATA[CORREO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="39" height="20" uuid="8f6f8086-5a59-454c-9cea-446edf0de13a"/>
+				<textFieldExpression><![CDATA[$F{Cliente_IdCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="1" width="66" height="20" uuid="1563b4b1-741a-4037-ab02-dc6e432efb8c"/>
+				<textFieldExpression><![CDATA[$F{Cliente_NombCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="1" width="70" height="20" uuid="e86b77e4-aac1-4353-a4bf-ceff5dafd192"/>
+				<textFieldExpression><![CDATA[$F{Cliente_ApellCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="0" width="74" height="20" uuid="4cecf1a1-9a56-4dab-9cbb-82e9214c11d0"/>
+				<textFieldExpression><![CDATA[$F{Cliente_DocCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="0" width="69" height="20" uuid="42f566d7-e7ac-4967-aac6-df68ede80e35"/>
+				<textFieldExpression><![CDATA[$F{Cliente_Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="1" width="135" height="20" uuid="ab7fd490-0b7d-469a-b76c-b7204599a88b"/>
+				<textFieldExpression><![CDATA[$F{Cliente_Correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

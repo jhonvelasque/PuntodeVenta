@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94f54a5d-8e89-49fe-af5c-503618924e5f">
+	<property name="ireport.zoom" value="0.9090909090909095"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     CategoriaCliente."IdCategoriaCliente" AS CategoriaCliente_IdCategoriaCliente,
+     CategoriaCliente."SegCliente" AS CategoriaCliente_SegCliente,
+     CategoriaCliente."FrecCompra" AS CategoriaCliente_FrecCompra,
+     CategoriaCliente."Cuotas" AS CategoriaCliente_Cuotas,
+     CategoriaCliente."CantCuotas" AS CategoriaCliente_CantCuotas,
+     CategoriaCliente."Estado" AS CategoriaCliente_Estado
+FROM
+     "dbo"."CategoriaCliente" CategoriaCliente]]>
+	</queryString>
+	<field name="CategoriaCliente_IdCategoriaCliente" class="java.lang.Integer"/>
+	<field name="CategoriaCliente_SegCliente" class="java.lang.String"/>
+	<field name="CategoriaCliente_FrecCompra" class="java.lang.String"/>
+	<field name="CategoriaCliente_Cuotas" class="java.lang.String"/>
+	<field name="CategoriaCliente_CantCuotas" class="java.lang.String"/>
+	<field name="CategoriaCliente_Estado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="28" width="240" height="20" uuid="e5f3d898-e569-4331-8823-446329ef73d2"/>
+				<text><![CDATA[REPORTE SIMPLE CATEGORIA CLIENTE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" uuid="dbff129e-5244-49dc-8aa9-8d682e8903ee"/>
+				<text><![CDATA[IdCategoriaCliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="74" height="20" uuid="20e5f236-ff9c-48f2-bccc-6857f169ebbc"/>
+				<text><![CDATA[SEGMENTACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="0" width="79" height="20" uuid="b6cae717-341b-4e84-9263-6b02c0a60a18"/>
+				<text><![CDATA[FRECUENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="0" width="73" height="20" uuid="371c7a95-87dc-4b83-86b0-ff60e0c512ab"/>
+				<text><![CDATA[CUOTAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="0" width="92" height="20" uuid="663abd6d-79d5-4689-9fe1-9e439a88f816"/>
+				<text><![CDATA[CANTIDAD DE CUOTAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="0" width="97" height="20" uuid="ca9d4e43-61fd-4549-a6cf-364e3bbb6fcc"/>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="69" height="20" uuid="4b1b63ae-0d4c-4016-9e13-55da145f5c9f"/>
+				<textFieldExpression><![CDATA[$F{CategoriaCliente_IdCategoriaCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="74" height="20" uuid="958498e8-151d-408d-b01f-b5cb9553bd44"/>
+				<textFieldExpression><![CDATA[$F{CategoriaCliente_SegCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="0" width="79" height="20" uuid="fd33d2cc-0ede-42ef-a23f-a33b74d10fe6"/>
+				<textFieldExpression><![CDATA[$F{CategoriaCliente_FrecCompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="0" width="73" height="20" uuid="2dbc23a1-2008-4b6a-ae02-0f85b70f20f0"/>
+				<textFieldExpression><![CDATA[$F{CategoriaCliente_Cuotas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="0" width="92" height="20" uuid="7a2a29b4-d75e-4313-bf3f-5a03817680b0"/>
+				<textFieldExpression><![CDATA[$F{CategoriaCliente_CantCuotas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="0" width="97" height="20" uuid="083cdc07-f071-48b2-8043-46c0a1648a63"/>
+				<textFieldExpression><![CDATA[$F{CategoriaCliente_Estado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
